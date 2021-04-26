@@ -6,7 +6,7 @@ Python3 implementation of the node2vec algorithm Aditya Grover, Jure Leskovec an
 
 ## Installation
 
-`pip install node2vec`
+`python setup.py install`
 
 ## Usage
 ```python
