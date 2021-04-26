@@ -157,17 +157,12 @@ class Node2Vec:
                                              self.NEIGHBORS_KEY,
                                              self.PROBABILITIES_KEY,
                                              self.FIRST_TRAVEL_KEY,
-                                             self.quiet) for
+                                             self.quiet,
+                                             self.labels) for
             idx, num_walks
             in enumerate(num_walks_lists, 1))
         walks = flatten(walk_results)
-        labeled_walks = []
-        for walk in walks:
-            labeled = []
-            for item in walk:
-                labeled.append(str(self.labels[item]))
-            labeled_walks.append(labeled)
-        return labeled_walks
+        return walks
 
     def fit(self, **skip_gram_params) -> gensim.models.Word2Vec:
         """
