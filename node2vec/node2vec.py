@@ -24,7 +24,7 @@ class Node2Vec:
 
     def __init__(self, graph: nx.Graph, dimensions: int = 128, walk_length: int = 80, num_walks: int = 10, p: float = 1,
                  q: float = 1, weight_key: str = 'weight', workers: int = 1, sampling_strategy: dict = None,
-                 quiet: bool = False, temp_folder: str = None, seed: int = None):
+                 quiet: bool = False, temp_folder: str = None, seed: int = None,labels=None):
         """
         Initiates the Node2Vec object, precomputes walking probabilities and generates the walks.
 
@@ -52,6 +52,7 @@ class Node2Vec:
         self.workers = workers
         self.quiet = quiet
         self.d_graph = defaultdict(dict)
+        self.labels = labels
 
         if sampling_strategy is None:
             self.sampling_strategy = {}
@@ -161,8 +162,14 @@ class Node2Vec:
             in enumerate(num_walks_lists, 1))
 
         walks = flatten(walk_results)
-
-        return walks
+        labeled_walks = []
+        for walk in walks:
+            labeled = []
+            for item in walk:
+                labeled.append(str(self.labels[item]))
+            labeled_walks.append(labeled)
+        print(labeled_walks)
+        return labeled_walks
 
     def fit(self, **skip_gram_params) -> gensim.models.Word2Vec:
         """
