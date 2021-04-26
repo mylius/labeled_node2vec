@@ -1,14 +1,14 @@
 from distutils.core import setup
 
 setup(
-    name='node2vec',
-    packages=['node2vec'],
+    name='labeled_node2vec',
+    packages=['labeled_node2vec'],
     version='0.4.3',
-    description='Implementation of the node2vec algorithm.',
-    author='Elior Cohen',
-    author_email='elior.cohen.p@gmail.com',
+    description='Implementation of the node2vec algorithm. Allowing using labeles instead of nodes.',
+    author='Jan-Gabriel Mylius & Elior Cohen',
+    author_email='mylius@posteo.de',
     license='MIT',
-    url='https://github.com/eliorc/node2vec',
+    url='https://github.com/mylius/labeled_node2vec',
     install_requires=[
         'networkx',
         'gensim',
